@@ -11,20 +11,17 @@ function Login() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: { usernameState },
-        password: { passwordState },
+        username: username,
+        password: password,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.id) {
-          
           localStorage.setItem("user", JSON.stringify(data));
-        
           window.location.href = "/profile";
         } else {
-         
-          alert(data.message);
+          alert(data.message); // Display the error message
         }
       });
   };
